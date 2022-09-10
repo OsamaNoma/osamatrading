@@ -32,7 +32,7 @@ while True:
       stat = Status.find_status(collection = "Status")
     if y == 0:
       x = 0
-      print("System disactivated at :", time_now())
+      print("System disactivated at :", time_now()),Tb.send_message("System and Bot are disactivated Now")
       y = y+1
   #except: 
      #pass 
