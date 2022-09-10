@@ -6,17 +6,18 @@ import time_server as ts
 import telegram_msg as Tb
 import requests
 
+while True:
 
-def time_now():
+ def time_now():
   time = dt.datetime.now()
   time = time.strftime("%H:%M:%S    //   %d-%m-%Y") #10:42:30   //   01-03-2021
   return time
 
-x = 0
-y = 0
-#connection = "OK"
+ x = 0
+ y = 0
+ #connection = "OK"
 
-while True:
+ while True:
   #try:
     ts.server_tm()
     stat = Status.find_status(collection = "Status")
