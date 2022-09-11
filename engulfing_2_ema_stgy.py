@@ -7,7 +7,7 @@ from datetime import datetime
 
 interval = "15m"
 depth = "50 hours ago UTC+1"
-ema_used = [25, 200]
+ema_used = [50, 100]
 
 def find_engulging(series):
     for i in series.index:
@@ -29,8 +29,8 @@ def engulfing_strgy(tickers, num):
                     close_price = float(df["Close"][last_index])
                     volume = float(df["Volume"][last_index])
                     volume = round(volume, 2)
-                    ema_25 = float(df["EMA_25"][last_index])
-                    ema_200 = float(df["EMA_200"][last_index])
+                    ema_50 = float(df["EMA_50"][last_index])
+                    ema_100 = float(df["EMA_100"][last_index])
                     low_price = float(df["Low"][last_index])
                     pct_change = ((low_price *100) / close_price) - 100
                     pct_change = round(pct_change, 2)
@@ -38,7 +38,7 @@ def engulfing_strgy(tickers, num):
                     now = now.minute
                     candle_time = last_index.minute
 
-                    if (close_price > ema_25 or close_price > ema_200) and ema_25 > ema_200 and pct_change > -4 and (candle_time == now - 15 ):
+                    if (close_price > ema_50 or close_price > ema_100) and ema_50 > ema_100 and pct_change > -4 and (candle_time == now - 15 ):
                      Signals.add(collection = "Signals", ticker = ticker, volume = volume, pct_sl = pct_change)
         except:
             pass
